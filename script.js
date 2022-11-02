@@ -4,7 +4,6 @@ let array = [
     {id:create_UUID(), task:'Entregar Projeto'},
     {id:create_UUID(), task:'Estudar JS'},
     {id:create_UUID(), task:'Fazer Commit'},
-    {id:create_UUID(), task:'Acabar Implementação da Função'},
     {id:create_UUID(), task:'Limpar a Casa'},
     {id:create_UUID(), task:'Fazer Compras do Super'}
 ]

@@ -6,6 +6,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     align-items: center;
+    background-color: #4D5BBD;
 }
 
 .title {
@@ -18,7 +19,7 @@ body {
     justify-content: center;
     gap: 16px;
 }
-.title h1 {
+.title h1{
     font-size: 45px;
 }
 
@@ -37,7 +38,6 @@ ul {
     padding: 0;
     gap: 20px;
 }
-
 ul li .li-decoration{
     display: flex;
     align-items: center;
@@ -47,7 +47,6 @@ ul li .li-decoration{
     border-radius: 5px;
     background-color: rgba(77, 91, 189, 82%);
 }
-
 ul li .li-decoration img{
     width: 25px;
 }
@@ -61,13 +60,11 @@ ul li {
     height: 70px;
     border-radius: 5px;
 }
-
 .btnAction{
     border: none;
     background-color: white;
     margin-right: 14px;
 }
-
 .btnAction img {
     width: 20px;
 }
