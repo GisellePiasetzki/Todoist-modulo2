@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+}
+
+.container {
+    background-color: blueviolet;
+    height : 300px;
+    width : 700px;
+    display: flex;
+}
+
+h1 {
+    background-color: slateblue;
+    color: greenyellow;
+}
+
+ul {
+    list-style: none;
+}
+
+.container_lists {
+    /* padding-left: 30px; */
+    height: 200px;
+    max-width: 200px;
+    background-color: aliceblue;
+    color: blueviolet;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.list_header {
+    font-weight: 900;
+}
+
+.Btn {
+    background-color: aliceblue;
+    color: blueviolet;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#lista_id {
+    display: none;
+}
