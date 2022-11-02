@@ -1,48 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
     align-items: center;
 }
 
-.container {
-    background-color: blueviolet;
-    height : 300px;
-    width : 700px;
+.title {
+    font-family: 'Poppins', sans-serif;
+    height: 30vh;
+    color: white;
     display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    justify-content: center;
+    gap: 16px;
+}
+.title h1 {
+    font-size: 45px;
 }
 
-h1 {
-    background-color: slateblue;
-    color: greenyellow;
+.content{
+    background-color: #E2DFDF;
+    height: 100%;
+    border-radius: 25px 25px 0 0;
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
 }
 
-.container_lists {
-    /* padding-left: 30px; */
-    height: 200px;
-    max-width: 200px;
-    background-color: aliceblue;
-    color: blueviolet;
-    border: 2px solid black;
-    border-radius: 20px;
+ul li .li-decoration{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(77, 91, 189, 82%);
 }
 
-.list_header {
-    font-weight: 900;
+ul li .li-decoration img{
+    width: 25px;
 }
 
-.Btn {
-    background-color: aliceblue;
-    color: blueviolet;
-    border: 2px solid black;
-    border-radius: 20px;
-    cursor: pointer;
+ul li {
+    background-color: white;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    border-radius: 5px;
 }
 
-#lista_id {
-    display: none;
+.btnAction{
+    border: none;
+    background-color: white;
+    margin-right: 14px;
+}
+
+.btnAction img {
+    width: 20px;
 }

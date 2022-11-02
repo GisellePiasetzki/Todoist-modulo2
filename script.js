@@ -104,6 +104,11 @@ function showResult() {
         let li = document.createElement("li");
         li.id = taskIn.id;
 
+        // cria o ícone do check
+        let decoration = document.createElement('span')
+        decoration.classList.add('li-decoration');
+        decoration.innerHTML = '<img src="Assets/check.svg" alt="ícone de check">';
+
         // cria o span de cada TODO
         let span = document.createElement('span');
         span.classList.add('taskList');
@@ -116,12 +121,13 @@ function showResult() {
         // cria o button (delete) de cada TODO
         let btnTrash = document.createElement('button');
         btnTrash.classList.add('btnAction'); 
-        btnTrash.innerHTML = '<i class="fa fa-trash"></i>';
+        btnTrash.innerHTML = '<img src="Assets/trash.svg" alt="ícone lixeira">';
         btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
         btnTrash.setAttribute("id", taskIn.id);
 
         // Adição do <li> do TODO no <ul>
         ul.appendChild(li); // insere o li dentro do ul de cima
+        li.appendChild(decoration); // insere a div de decoração dentro da li
         li.appendChild(span); // insere o span dentro do ul de cima
         li.appendChild(div); // insere o div dentro do ul de cima
         div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
