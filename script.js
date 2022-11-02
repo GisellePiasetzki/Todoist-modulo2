@@ -1,15 +1,13 @@
 
+// Array do TODO
 let array = [
-    {id:create_UUID(), task:'teste 1'},
-    {id:create_UUID(), task:'teste 2'},
-    {id:create_UUID(), task:'teste 3'},
-    {id:create_UUID(), task:'teste 4'},
-    {id:create_UUID(), task:'teste 5'},
-    {id:create_UUID(), task:'teste 6'}
+    {id:create_UUID(), task:'Entregar Projeto'},
+    {id:create_UUID(), task:'Estudar JS'},
+    {id:create_UUID(), task:'Fazer Commit'},
+    {id:create_UUID(), task:'Acabar Implementação da Função'},
+    {id:create_UUID(), task:'Limpar a Casa'},
+    {id:create_UUID(), task:'Fazer Compras do Super'}
 ]
-
-let btnAddTask = document.querySelector('#btnAddTask');
-let inputNewTask = document.querySelector('#inputNewTask');
 
 
 // cria um UUID
@@ -24,7 +22,12 @@ function create_UUID() {
 }
 
 
-// adiciona tarefa
+// variáveis do HTML
+let btnAddTask = document.querySelector('#btnAddTask');
+let inputNewTask = document.querySelector('#inputNewTask');
+
+
+// adiciona a tarefa
 btnAddTask.addEventListener('click', () => {
     let taskValue = inputNewTask.value; //varivel para guardar o valor que está no meu input
     array.push({id:create_UUID(), task:taskValue})
@@ -35,43 +38,40 @@ btnAddTask.addEventListener('click', () => {
     console.log(array)
 })
 
-// mostrar a tarefa recebida na tela
-function showResult() {
-    let ul = document.querySelector("ul") // quando eu clicar em + ele vai selecionar a minha ul do html
-    ul.innerHTML = null // impede de repetir todas as tarefas quando entra uma nova
 
-    array.forEach(function (taskIn) {
-        let li = document.createElement("li"); // cria um li
-        li.id = taskIn.id;
+// editar a tarefa
+document.addEventListener("DOMContentLoaded", function() {
+    let lista = document.querySelector('#taskList');
+    let campo = document.querySelector('.campo');
+    let span; // variável que receberá a LI que está sendo editada
 
-        let decoration = document.createElement('span')
-        decoration.classList.add('li-decoration');
-        decoration.innerHTML = '<img src="Assets/check.svg" alt="ícone de check">';
+    lista.addEventListener('click', function(event) {
+        span = event.target;
+        if(span.tagName == "SPAN") { // verifica se é uma LI
+            campo.value = span.textContent;
+        };
+    });
+    
+    campo.addEventListener('keypress', function(event) {
+        if(event.keyCode === 13 && span) {
+            // Procura pelo ID do Item no TODO
+            for(let i = 0; i < array.length; i++) {
+                if(span.id === array[i].id) {
+                    array[i].task = campo.value;
+                }
+            }
 
-        let span = document.createElement('span');
-        span.classList.add('taskList');
-        span.id = taskIn.id;
-        span.innerHTML = taskIn.task;
-        // li.innerText = task; // insere o texte capturado dentro do li
+            span.textContent = campo.value;
+            campo.value = ''; // esvazia o campo
+            span = null; // reseto a variável
+            
+            console.log(array)
+        };
+    });
+});
 
-        let div = document.createElement('div');
 
-        let btnTrash = document.createElement('button');
-        btnTrash.classList.add('btnAction'); 
-        btnTrash.innerHTML = '<img src="Assets/trash.svg" alt="ícone lixeira">';
-        btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
-        btnTrash.setAttribute("id", taskIn.id);
-
-        ul.appendChild(li); // insere o li dentro do ul de cima
-        li.appendChild(decoration); // insere a div de decoração dentro da li
-        li.appendChild(span); // insere o span dentro do ul de cima
-        li.appendChild(div); // insere o div dentro do ul de cima
-        div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
-    })
-}
-
-showResult();
-
+// deleta a tarefa
 function delet(idTask) {
     let confirmation = window.confirm('Tem certeza que deseja excluir essa tarefa?')
 
@@ -92,36 +92,43 @@ function delet(idTask) {
     }     
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    let lista = document.querySelector('#taskList');
-    let campo = document.querySelector('.campo');
-    let span; // variável que receberá a LI que está sendo editada
 
-    lista.addEventListener('click', function(event) {
-        span = event.target;
-        if(span.tagName == "SPAN") { // verifica se é uma LI
-            campo.value = span.textContent;
-        };
-    });
-    
-    campo.addEventListener('keypress', function(event) {
-        if(event.keyCode === 13 && span) {
-            for(let i = 0; i < array.length; i++) {
-                if(span.id === array[i].id) {
-                    array[i].task = campo.value;
-                }
-            }
+// mostrar as tarefas do array na tela
+function showResult() {
+    // cria o ul do TODO
+    let ul = document.querySelector("ul") // quando eu clicar em + ele vai selecionar a minha ul do html
+    ul.innerHTML = null // impede de repetir todas as tarefas quando entra uma nova
 
-            span.textContent = campo.value;
-            campo.value = ''; // esvazia o campo
-            span = null; // reseto a variável
-            
-            console.log(array)
-        };
-    });
-});
+    array.forEach(function (taskIn) {
+        // cra o li de cada TODO
+        let li = document.createElement("li");
+        li.id = taskIn.id;
+
+        // cria o span de cada TODO
+        let span = document.createElement('span');
+        span.classList.add('taskList');
+        span.id = taskIn.id;
+        span.innerHTML = taskIn.task;
+
+        // cra o div de cada TODO
+        let div = document.createElement('div');
+
+        // cria o button (delete) de cada TODO
+        let btnTrash = document.createElement('button');
+        btnTrash.classList.add('btnAction'); 
+        btnTrash.innerHTML = '<i class="fa fa-trash"></i>';
+        btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
+        btnTrash.setAttribute("id", taskIn.id);
+
+        // Adição do <li> do TODO no <ul>
+        ul.appendChild(li); // insere o li dentro do ul de cima
+        li.appendChild(span); // insere o span dentro do ul de cima
+        li.appendChild(div); // insere o div dentro do ul de cima
+        div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
+    })
+}
 
 
-
-
+// Executa Função para Mostrar o TODO
+showResult();
 
