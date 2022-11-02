@@ -44,6 +44,10 @@ function showResult() {
         let li = document.createElement("li"); // cria um li
         li.id = taskIn.id;
 
+        let decoration = document.createElement('span')
+        decoration.classList.add('li-decoration');
+        decoration.innerHTML = '<img src="Assets/check.svg" alt="ícone de check">';
+
         let span = document.createElement('span');
         span.classList.add('taskList');
         span.id = taskIn.id;
@@ -54,11 +58,12 @@ function showResult() {
 
         let btnTrash = document.createElement('button');
         btnTrash.classList.add('btnAction'); 
-        btnTrash.innerHTML = '<i class="fa fa-trash"></i>';
+        btnTrash.innerHTML = '<img src="Assets/trash.svg" alt="ícone lixeira">';
         btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
         btnTrash.setAttribute("id", taskIn.id);
 
         ul.appendChild(li); // insere o li dentro do ul de cima
+        li.appendChild(decoration); // insere a div de decoração dentro da li
         li.appendChild(span); // insere o span dentro do ul de cima
         li.appendChild(div); // insere o div dentro do ul de cima
         div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
