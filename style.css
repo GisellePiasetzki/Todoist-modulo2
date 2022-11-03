@@ -69,6 +69,29 @@ ul li {
     width: 20px;
 }
 
+.btnAcao{
+    border: none;
+    background-color: white;
+    margin-right: 5px;
+}
+.btnAcao img{
+    width: 15px;
+}
+
+.fa {
+    color: white;
+}
+
+#openAddWindow{
+    width: 90%;
+    height: 58px;
+    background: #374393;
+    border: none;
+    margin: 22px;
+    border-radius: 5px;
+}
+
+
 #windowEditBack{
 position: fixed;
    top: 0;
@@ -106,12 +129,39 @@ position: fixed;
    left: 50%;
    transform: translate(-50%, -50%);
    padding: 20px;
-   width: 415px;
    border-radius: 12px;
    z-index: 200;
    display: none;
+   width: 90%;
+   height: 30%;
+   background-color:#4D5BBD;
+
 } 
 
 #AddWindowDiv.abrir{
    display: block !important;
+   
+}
+
+
+#btnAddTask{
+    background-color: white;
+    border: none;
+    color: #374393;
+    font-weight: bold;
+    height: 43px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+
+}
+
+#inputNewTask{
+    display: flex;
+    margin: auto auto 50px auto;
+    height: 60px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
 }
