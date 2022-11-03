@@ -79,7 +79,7 @@ btnAddTask.addEventListener('click', () => {
 
 function edit(idTask){
 
-    document.getElementById("editList").style.display = "Block";
+    // document.getElementById("editList").style.display = "Block";
     // document.getElementById("inputTaskNameEdit").value = array[idTask];
     document.getElementById("inputTaskNameEdit").dataset.idTask = idTask;
     idTask = idTask;
@@ -91,8 +91,7 @@ function edit(idTask){
     if (li){
         idTarefaEdicao.innerHTML = '#' +idTask;
          inputTaskNameEdit.value = li.innerText;
-         console.log(li)
-        // alternarJanelaEdicao();
+       alternarJanelaEdicao();
     }
     
 }
@@ -112,6 +111,7 @@ function update() {
 
 
     array[iTODO].task = updte;
+    alternarJanelaEdicao()
     showResult()
   }
 
@@ -126,10 +126,10 @@ btnEditWindowClose.addEventListener('click', (e) => {
 
 
 
-// function alternarJanelaEdicao() {
-//     editWindow.classList.toggle('abrir');
-//     windowEditBack.classList.toggle('abrir');
-// }
+function alternarJanelaEdicao() {
+    editList.classList.toggle('abrir');
+    windowEditBack.classList.toggle('abrir');
+}
 
 
 // deleta a tarefa

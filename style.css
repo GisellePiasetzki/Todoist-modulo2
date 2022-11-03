@@ -85,7 +85,7 @@ position: fixed;
    display: block !important;
 }
 
-#editWindow{
+#editList{
    position: fixed;
    top: 50%;
    left: 50%;
@@ -97,6 +97,6 @@ position: fixed;
    display: none;
 } 
 
-#editWindow.abrir{
+#editList.abrir{
    display: block !important;
 }
