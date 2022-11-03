@@ -41,8 +41,8 @@ btnAddTask.addEventListener('click', () => {
     
     inputNewTask.value = "" // para quando clicar no botão adicionar, o campo input fica vazio
 
-    showResult()
-    console.log(array)
+    showResult();
+    AddWindow(); // para voltar a tela inicial e sair do popUP
 })
 
 
@@ -83,6 +83,13 @@ btnEditWindowClose.addEventListener('click', (e) => {
 function alternarJanelaEdicao() {
     editList.classList.toggle('abrir');
     windowEditBack.classList.toggle('abrir');
+}
+
+
+
+function AddWindow() {
+    AddWindowDiv.classList.toggle('abrir'); // para abrir o popUp para adicionar tarefa
+    windowEditBack.classList.toggle('abrir'); // para deixar o fundo preto opaco
 }
 
 

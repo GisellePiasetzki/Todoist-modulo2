@@ -16,13 +16,14 @@
       </section>
 
     <section class="content">
-        <div class="top">
-            <button id="btnAddTask">
-                <i class="fa fa-plus"></i>
-            </button>
-            <input type="text" id="inputNewTask" class = "campo" placeholder="Digite uma nova tarefa aqui">
+        <button id="openAddWindow" onclick="AddWindow()">
+            <i class="fa fa-plus"></i>
+        </button>
+        <!-- Só abre a div abaixo quando o button acima é acionado-->
+        <div  id ="AddWindowDiv" >
+            <input type="text" id="inputNewTask"  placeholder="Digite uma nova tarefa aqui">
+            <button id="btnAddTask"> Salvar Tarefa</button>
         </div>
-
         <ul id="taskList">
             <li>
                 <span class="li-decoration">
