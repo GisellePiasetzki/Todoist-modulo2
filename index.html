@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do</title>
-    <link rel="stylesheet" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbTN0VUp5Z1JCTzJtaFQ2U1hiZHUwNm03dnVrd3xBQ3Jtc0tsX2M0Tk1PUlhnT0FodHVrTEFtcTFsdHViWVd2LXNjYmFCM0JnRmIyUjg0RWstQUdmOHUtQURIZUdnYW13dTNOSnhvWmluSG50NmotTzQxNTBKSElrNWstTTBZMVJVbGlmWXF0VnJiUy14cHkycUJqMA&q=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Ffont-awesome%2F4.7.0%2Fcss%2Ffont-awesome.min.css&v=4CUa9R_N4eQ">
+    <!-- <link rel="stylesheet" href="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbTN0VUp5Z1JCTzJtaFQ2U1hiZHUwNm03dnVrd3xBQ3Jtc0tsX2M0Tk1PUlhnT0FodHVrTEFtcTFsdHViWVd2LXNjYmFCM0JnRmIyUjg0RWstQUdmOHUtQURIZUdnYW13dTNOSnhvWmluSG50NmotTzQxNTBKSElrNWstTTBZMVJVbGlmWXF0VnJiUy14cHkycUJqMA&q=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Ffont-awesome%2F4.7.0%2Fcss%2Ffont-awesome.min.css&v=4CUa9R_N4eQ"> -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -36,6 +36,27 @@
             </li>
         </ul>
     </section>
+
+   
+
+    <div id="editList" style="display:none">
+        <button id="btnEditWindowClose">
+            <i class="fa fa-remove"></i>
+        </button>
+        <h2 id="idTarefaEdicao">#1021</h2>
+        <hr>
+        <form >
+            <div class="frm-row">
+                <label for="name">Nome</label>
+                <input type="text" id="inputTaskNameEdit">
+            </div>
+            <div class="frm-row">
+                <input type="button" value="Update" onclick="update()">
+            </div>
+        </form>
+    </div>
+
+    <div id="windowEditBack"> </div>
 
     <script src="https://kit.fontawesome.com/9bc42a4144.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>

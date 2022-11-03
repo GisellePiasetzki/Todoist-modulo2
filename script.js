@@ -24,6 +24,14 @@ function create_UUID() {
 // variáveis do HTML
 let btnAddTask = document.querySelector('#btnAddTask');
 let inputNewTask = document.querySelector('#inputNewTask');
+let editWindow = document.querySelector('#editWindow');
+let windowEditBack = document.querySelector('#windowEditBack');
+let btnEditWindowClose = document.querySelector('#btnEditWindowClose');
+let idTarefaEdicao = document.querySelector('#idTarefaEdicao');
+let inputTaskNameEdit = document.querySelector('#inputTaskNameEdit');
+let btnAttTask = document.querySelector('#btnAttTask');
+let inputTask = document.getElementsByClassName("input-task");
+
 
 
 // adiciona a tarefa
@@ -38,36 +46,90 @@ btnAddTask.addEventListener('click', () => {
 })
 
 
-// editar a tarefa
-document.addEventListener("DOMContentLoaded", function() {
-    let lista = document.querySelector('#taskList');
-    let campo = document.querySelector('.campo');
-    let span; // variável que receberá a LI que está sendo editada
+// // editar a tarefa
+// document.addEventListener("DOMContentLoaded", function() {
+//     let lista = document.querySelector('#taskList');
+//     let campo = document.querySelector('.campo');
+//     let button; // variável que receberá a LI que está sendo editada
 
-    lista.addEventListener('click', function(event) {
-        span = event.target;
-        if(span.tagName == "SPAN") { // verifica se é uma LI
-            campo.value = span.textContent;
-        };
-    });
+//     lista.addEventListener('click', function(event) {
+//         button = event.target;
+//         if(span.tagName == "SPAN") { // verifica se é uma LI
+//             campo.value = span.textContent;
+//         };
+//     });
     
-    campo.addEventListener('keypress', function(event) {
-        if(event.keyCode === 13 && span) {
-            // Procura pelo ID do Item no TODO
-            for(let i = 0; i < array.length; i++) {
-                if(span.id === array[i].id) {
-                    array[i].task = campo.value;
-                }
-            }
+//     campo.addEventListener('keypress', function(event) {
+//         if(event.keyCode === 13 && span) {
+//             // Procura pelo ID do Item no TODO
+//             for(let i = 0; i < array.length; i++) {
+//                 if(span.id === array[i].id) {
+//                     array[i].task = campo.value;
+//                 }
+//             }
 
-            span.textContent = campo.value;
-            campo.value = ''; // esvazia o campo
-            span = null; // reseto a variável
+//             span.textContent = campo.value;
+//             campo.value = ''; // esvazia o campo
+//             span = null; // reseto a variável
             
-            console.log(array)
-        };
-    });
+//             console.log(array)
+//         };
+//     });
+// });
+
+function edit(idTask){
+
+    document.getElementById("editList").style.display = "Block";
+    // document.getElementById("inputTaskNameEdit").value = array[idTask];
+    document.getElementById("inputTaskNameEdit").dataset.idTask = idTask;
+    idTask = idTask;
+
+    
+
+    let li = document.getElementById(''+idTask+'');
+
+    if (li){
+        idTarefaEdicao.innerHTML = '#' +idTask;
+         inputTaskNameEdit.value = li.innerText;
+         console.log(li)
+        // alternarJanelaEdicao();
+    }
+    
+}
+
+function update() {
+    //Edit();
+    var updte = document.getElementById("inputTaskNameEdit").value;
+    idTask = document.getElementById("inputTaskNameEdit").dataset.idTask;
+   
+
+    for(let i = 0; i < array.length; i++) {
+        if(idTask == array[i].id) {
+            iTODO = i;
+            break
+        }
+    }
+
+
+    array[iTODO].task = updte;
+    showResult()
+  }
+
+
+btnEditWindowClose.addEventListener('click', (e) => {
+    alternarJanelaEdicao();
 });
+
+
+
+
+
+
+
+// function alternarJanelaEdicao() {
+//     editWindow.classList.toggle('abrir');
+//     windowEditBack.classList.toggle('abrir');
+// }
 
 
 // deleta a tarefa
@@ -103,6 +165,7 @@ function showResult() {
         let li = document.createElement("li");
         li.id = taskIn.id;
 
+
         // cria o ícone do check
         let decoration = document.createElement('span')
         decoration.classList.add('li-decoration');
@@ -117,9 +180,18 @@ function showResult() {
         // cra o div de cada TODO
         let div = document.createElement('div');
 
+        
+
+        let btnEdit = document.createElement('button');
+        btnEdit.classList.add('btnAction'); 
+        btnEdit.innerHTML = '<i class="fa fa-pencil"></i>';
+        btnEdit.setAttribute("onclick", `edit('${taskIn.id}')`);
+        btnEdit.setAttribute("id", taskIn.id);
+
+
         // cria o button (delete) de cada TODO
         let btnTrash = document.createElement('button');
-        btnTrash.classList.add('btnAction'); 
+        btnTrash.classList.add('btnAcao'); 
         btnTrash.innerHTML = '<img src="Assets/trash.svg" alt="ícone lixeira">';
         btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
         btnTrash.setAttribute("id", taskIn.id);
@@ -130,10 +202,14 @@ function showResult() {
         li.appendChild(span); // insere o span dentro do ul de cima
         li.appendChild(div); // insere o div dentro do ul de cima
         div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
+        div.appendChild(btnEdit);// insere o btnTrash dentro do div de cima
+
     })
 }
 
 
 // Executa Função para Mostrar o TODO
 showResult();
+
+
 
