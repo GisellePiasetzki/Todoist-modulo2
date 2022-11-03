@@ -46,62 +46,26 @@ btnAddTask.addEventListener('click', () => {
 })
 
 
-// // editar a tarefa
-// document.addEventListener("DOMContentLoaded", function() {
-//     let lista = document.querySelector('#taskList');
-//     let campo = document.querySelector('.campo');
-//     let button; // variável que receberá a LI que está sendo editada
-
-//     lista.addEventListener('click', function(event) {
-//         button = event.target;
-//         if(span.tagName == "SPAN") { // verifica se é uma LI
-//             campo.value = span.textContent;
-//         };
-//     });
-    
-//     campo.addEventListener('keypress', function(event) {
-//         if(event.keyCode === 13 && span) {
-//             // Procura pelo ID do Item no TODO
-//             for(let i = 0; i < array.length; i++) {
-//                 if(span.id === array[i].id) {
-//                     array[i].task = campo.value;
-//                 }
-//             }
-
-//             span.textContent = campo.value;
-//             campo.value = ''; // esvazia o campo
-//             span = null; // reseto a variável
-            
-//             console.log(array)
-//         };
-//     });
-// });
-
+// Tafera para quando o botão EDITAR é acionado
 function edit(idTask){
 
-    // document.getElementById("editList").style.display = "Block";
-    // document.getElementById("inputTaskNameEdit").value = array[idTask];
-    document.getElementById("inputTaskNameEdit").dataset.idTask = idTask;
-    idTask = idTask;
-
-    
-
-    let li = document.getElementById(''+idTask+'');
+    document.getElementById("inputTaskNameEdit").dataset.idTask = idTask; //Pegamos o id da tafera para editar
+    let li = document.getElementById(''+idTask+''); //Pegamos o li da tafera pelo Id
 
     if (li){
-        idTarefaEdicao.innerHTML = '#' +idTask;
-         inputTaskNameEdit.value = li.innerText;
-       alternarJanelaEdicao();
+        // idTarefaEdicao.innerHTML = '#' +idTask;  // Ativar caso queira saber qual o ID da tarefa no popup editar
+         inputTaskNameEdit.value = li.innerText; // coloca o nome da tarefa atuar no input de editar
+        alternarJanelaEdicao();
     }
     
 }
 
+// Tarefa para atualizar o valor editado quando clicar em Salvar
 function update() {
-    //Edit();
-    let updte = document.getElementById("inputTaskNameEdit").value;
-    idTask = document.getElementById("inputTaskNameEdit").dataset.idTask;
+    let updte = document.getElementById("inputTaskNameEdit").value; // pega o valor digitado no input editar
+    idTask = document.getElementById("inputTaskNameEdit").dataset.idTask; //Pegamos o id da tafera para editar
    
-
+    // Descobir qual é o índice da tarefa a ser editada
     for(let i = 0; i < array.length; i++) {
         if(idTask == array[i].id) {
             iTODO = i;
@@ -109,23 +73,18 @@ function update() {
         }
     }
 
-
-    array[iTODO].task = updte;
-    alternarJanelaEdicao()
-    showResult()
+    array[iTODO].task = updte; // pegamos o array no indice a ser editado, e passamos o novo valor capturado no update
+    alternarJanelaEdicao() // sai do popUp Editar
+    showResult() //mostra a lista de tarefas, já com o array editado na tela 
   }
 
-
+// Ao clicar no botão fechar do popUp Editar ele chama a funcao alternarJanelaEdicao para voltar a tela inicial
 btnEditWindowClose.addEventListener('click', (e) => {
     alternarJanelaEdicao();
 });
 
 
-
-
-
-
-
+// adiciona a classe abrir no html para que possamos tratar ela no css com o display
 function alternarJanelaEdicao() {
     editList.classList.toggle('abrir');
     windowEditBack.classList.toggle('abrir');
@@ -181,7 +140,7 @@ function showResult() {
         let div = document.createElement('div');
 
         
-
+        // cria o button (edit) de cada TODO
         let btnEdit = document.createElement('button');
         btnEdit.classList.add('btnAction'); 
         btnEdit.innerHTML = '<i class="fa fa-pencil"></i>';
@@ -202,7 +161,7 @@ function showResult() {
         li.appendChild(span); // insere o span dentro do ul de cima
         li.appendChild(div); // insere o div dentro do ul de cima
         div.appendChild(btnTrash);// insere o btnTrash dentro do div de cima
-        div.appendChild(btnEdit);// insere o btnTrash dentro do div de cima
+        div.appendChild(btnEdit);// insere o btnEdit dentro do div de cima
 
     })
 }
