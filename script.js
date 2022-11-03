@@ -143,7 +143,7 @@ function showResult() {
         // cria o button (edit) de cada TODO
         let btnEdit = document.createElement('button');
         btnEdit.classList.add('btnAction'); 
-        btnEdit.innerHTML = '<i class="fa fa-pencil"></i>';
+        btnEdit.innerHTML = '<img src="Assets/pencil.svg">';
         btnEdit.setAttribute("onclick", `edit('${taskIn.id}')`);
         btnEdit.setAttribute("id", taskIn.id);
 
