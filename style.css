@@ -85,21 +85,52 @@ position: fixed;
    display: block !important;
 }
 
+/* Modal edição */
+
 #editList{
    position: fixed;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
    padding: 20px;
-   width: 415px;
+   width: 350px;
    border-radius: 12px;
    z-index: 200;
    display: none;
+
+   background-color: white;
 } 
 
 #editList.abrir{
-   display: block !important;
+    display: block !important;
+    /* animation: modalTransition .5s ease-in; */
 }
+
+#editList #btnEditWindowClose{
+    position: absolute;
+    /* top: 10px;
+    left: 10px; */
+
+}
+
+#editList form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+#editList form input[type=text] {
+    width: 80%;
+}
+
+#editList form input[type=button] {
+    width: 100%;
+    padding: 10px;
+}
+
+
 #AddWindowDiv{
    position: fixed;
    top: 50%;
