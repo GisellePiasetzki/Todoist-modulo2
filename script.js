@@ -66,12 +66,7 @@ function update() {
     idTask = document.getElementById("inputTaskNameEdit").dataset.idTask; //Pegamos o id da tafera para editar
    
     // Descobir qual é o índice da tarefa a ser editada
-    for(let i = 0; i < array.length; i++) {
-        if(idTask == array[i].id) {
-            iTODO = i;
-            break
-        }
-    }
+    const iTODO = array.findIndex(({id}) => id == idTask)
 
     array[iTODO].task = updte; // pegamos o array no indice a ser editado, e passamos o novo valor capturado no update
     alternarJanelaEdicao() // sai do popUp Editar
@@ -95,20 +90,18 @@ function alternarJanelaEdicao() {
 function delet(idTask) {
     let confirmation = window.confirm('Tem certeza que deseja excluir essa tarefa?')
 
+
     if (confirmation) {
+        
         //indentificamos qual o índice 
-        for(let i = 0; i < array.length; i++) {
-            if(idTask == array[i].id) {
-                iTODO = i;
-                break
-            }
-        }
+        const iTODO = array.findIndex(({id}) => id == idTask)
 
         // Remove o Li do html
         const taskRemove = document.getElementById(idTask);
         taskRemove.parentNode.removeChild(taskRemove);
 
         return array.splice(iTODO, 1); // retorna a array sem o elemento excluido
+        
     }     
 }
 
