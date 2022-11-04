@@ -47,7 +47,6 @@ function check(idTask){
     else if(!cb.check) {
         task.style.textDecoration = 'none';
     }
-    
 }
 
 // adiciona a tarefa quando clicar no Salvar
