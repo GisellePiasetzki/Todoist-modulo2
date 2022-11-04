@@ -1,6 +1,6 @@
 
 // Array do TODO
-let array = [
+const array = [
     {id:create_UUID(), task:'Entregar Projeto'},
     {id:create_UUID(), task:'Estudar JS'},
     {id:create_UUID(), task:'Fazer Commit'},
@@ -11,8 +11,8 @@ let array = [
 // cria um UUID
 function create_UUID() {
     let dt = new Date().getTime();
-    let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        let r = (dt + Math.random() * 16) % 16 | 0;
+    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = (dt + Math.random() * 16) % 16 | 0;
         dt = Math.floor(dt/16);
         return (c == 'x' ? r :(r&0x3 | 0x8)).toString(16);
     });
@@ -146,7 +146,7 @@ function delet(idTask) {
 // Atualizar interface/tela com os objetos alterados do aray 
 function showResult() {
     // cria o ul do TODO
-    let ul = document.querySelector("ul") // quando eu clicar em + ele vai selecionar a minha ul do html
+    const ul = document.querySelector("ul") // quando eu clicar em + ele vai selecionar a minha ul do html
     ul.innerHTML = null // impede de repetir todas as tarefas quando entra uma nova
 
     array.forEach(function (taskIn) {
