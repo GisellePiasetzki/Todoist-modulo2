@@ -49,8 +49,8 @@ function check(idTask) {
     }
 }
 
-// adiciona a tarefa quando clicar no Salvar
-btnAddTask.addEventListener('click', () => {
+function AddTaskFunction () {
+
     const taskValue = inputNewTask.value; // varivel para guardar o valor que está no meu input
 
     if(taskValue) { // if para não adicionar task vazia
@@ -60,11 +60,25 @@ btnAddTask.addEventListener('click', () => {
         alert("Precisa digitar um nome para tarefa") 
         return
     }
+    
 
     inputNewTask.value = "" // para quando clicar no botão adicionar, o campo input fica vazio
 
     showResult(); // Atualizar interface/tela com os objetos alterados do aray 
     AddWindow(); // para voltar a tela inicial e sair do modal 
+}
+
+// Chama a função adicionar tarefa quando clicar no Salvar
+btnAddTask.addEventListener('click', () => {
+    AddTaskFunction(); 
+})
+
+// Chama a função adicionar tarefa quando apertar o Enter
+inputNewTask.addEventListener('keypress', (e) => {
+
+   if(e.keyCode == 13) // 13 é o número da tecla
+    AddTaskFunction();
+
 })
 
 // Tafera para quando o botão EDITAR é acionado
