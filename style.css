@@ -134,14 +134,21 @@ ul li {
     display: block !important;
 }
 
-#editList #btnEditWindowClose{
+#editList #btnEditWindowClose , #AddWindowDiv #btnAddClose {
     position: absolute;
     background-color: transparent;
     border: none;
 }
 
+
+
 .fa-remove {
     color: #374393;
+    font-size: 20px;
+}
+
+#btnAddClose .fa-remove {
+    color: #fff;
     font-size: 20px;
 }
 
@@ -214,9 +221,9 @@ ul li {
 
 #inputNewTask{
     display: flex;
-    margin: auto auto 50px auto;
+    margin: 30px auto 20px auto;
     height: 60px;
-    width: 90%;
+    width: 97%;
     border-radius: 5px;
     border: none;
 }

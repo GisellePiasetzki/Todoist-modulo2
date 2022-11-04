@@ -28,12 +28,16 @@ const btnEditWindowClose = document.querySelector('#btnEditWindowClose');
 const idTarefaEdicao = document.querySelector('#idTarefaEdicao');
 const inputTaskNameEdit = document.querySelector('#inputTaskNameEdit');
 const btnAttTask = document.querySelector('#btnAttTask');
+const btnAddClose = document.querySelector('#btnAddClose');
 const inputTask = document.getElementsByClassName("input-task");
+
+
 
 // Mostrar modal ao apertar botão +
 function AddWindow() {
     AddWindowDiv.classList.toggle('abrir'); // para abrir o modal para adicionar tarefa
     windowEditBack.classList.toggle('abrir'); // para deixar o fundo preto opaco
+    inputNewTask.focus(); // deixar o campo input já selecionado 
 }
 
 // risca a task no front pelo checkbox 
@@ -81,6 +85,11 @@ inputNewTask.addEventListener('keypress', (e) => {
 
 })
 
+// para fechar a janela adicionar tarefa
+btnAddClose.addEventListener('click', () => {
+    AddWindow();
+});
+
 // Tafera para quando o botão EDITAR é acionado
 function edit(idTask){
     document.getElementById("inputTaskNameEdit").dataset.idTask = idTask; // Pegamos o id da tafera para editar
@@ -107,7 +116,7 @@ function update() {
 }
 
 // Ao clicar no botão fechar do modal Editar ele chama a funcao alternar janela para voltar a tela inicial
-btnEditWindowClose.addEventListener('click', (e) => {
+btnEditWindowClose.addEventListener('click', () => {
     shiftWindow();
 });
 
