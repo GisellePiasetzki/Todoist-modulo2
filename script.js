@@ -36,7 +36,7 @@ function AddWindow() {
     windowEditBack.classList.toggle('abrir'); // para deixar o fundo preto opaco
 }
 
-// 
+// risca a task no front pelo checkbox
 function check(idTask){
     const cb = document.querySelector('#check' + idTask);
     const task = document.getElementById('span' + idTask);
