@@ -7,8 +7,6 @@ let array = [
     {id:create_UUID(), task:'Limpar a Casa'},
     {id:create_UUID(), task:'Fazer Compras do Super'}
 ]
-
-
 // cria um UUID
 function create_UUID() {
     let dt = new Date().getTime();
@@ -21,7 +19,7 @@ function create_UUID() {
 }
 
 
-// variáveis do HTML
+// variáveis do HTML para trabalhar com DOM
 let btnAddTask = document.querySelector('#btnAddTask');
 let inputNewTask = document.querySelector('#inputNewTask');
 let editWindow = document.querySelector('#editWindow');
@@ -32,17 +30,23 @@ let inputTaskNameEdit = document.querySelector('#inputTaskNameEdit');
 let btnAttTask = document.querySelector('#btnAttTask');
 let inputTask = document.getElementsByClassName("input-task");
 
+// Mostrar modal ao apertar botão +
+function AddWindow() {
+    AddWindowDiv.classList.toggle('abrir'); // para abrir o modal para adicionar tarefa
+    windowEditBack.classList.toggle('abrir'); // para deixar o fundo preto opaco
+}
 
-
-// adiciona a tarefa
+// adiciona a tarefa quando clicar no Salvar
 btnAddTask.addEventListener('click', () => {
-    let taskValue = inputNewTask.value; //varivel para guardar o valor que está no meu input
-    array.push({id:create_UUID(), task:taskValue})
-    
+    const taskValue = inputNewTask.value; //varivel para guardar o valor que está no meu input
+    if(taskValue) {array.push({id:create_UUID(), task:taskValue})} // if para não adicionar task vazia
+    else { alert("Precisa digitar um nome pra tarefa") 
+    return}
+
     inputNewTask.value = "" // para quando clicar no botão adicionar, o campo input fica vazio
 
-    showResult();
-    AddWindow(); // para voltar a tela inicial e sair do popUP
+    showResult(); // Atualizar interface/tela com os objetos alterados do aray 
+    AddWindow(); // para voltar a tela inicial e sair do modal 
 })
 
 
@@ -55,12 +59,12 @@ function edit(idTask){
     if (li){
         // idTarefaEdicao.innerHTML = '#' +idTask;  // Ativar caso queira saber qual o ID da tarefa no popup editar
          inputTaskNameEdit.value = li.innerText; // coloca o nome da tarefa atuar no input de editar
-        alternarJanelaEdicao();
+        shiftWindow();
     }
     
 }
 
-// Tarefa para atualizar o valor editado quando clicar em Salvar
+// Tarefa para atualizar o valor editado quando clicar em Atualizar
 function update() {
     let updte = document.getElementById("inputTaskNameEdit").value; // pega o valor digitado no input editar
     idTask = document.getElementById("inputTaskNameEdit").dataset.idTask; //Pegamos o id da tafera para editar
@@ -69,27 +73,20 @@ function update() {
     const iTODO = array.findIndex(({id}) => id == idTask)
 
     array[iTODO].task = updte; // pegamos o array no indice a ser editado, e passamos o novo valor capturado no update
-    alternarJanelaEdicao() // sai do popUp Editar
+    shiftWindow() // sai do modal Editar
     showResult() //mostra a lista de tarefas, já com o array editado na tela 
   }
 
-// Ao clicar no botão fechar do popUp Editar ele chama a funcao alternarJanelaEdicao para voltar a tela inicial
-btnEditWindowClose.addEventListener('click', (e) => {
-    alternarJanelaEdicao();
+    // Ao clicar no botão fechar do modal Editar ele chama a funcao alternar janela para voltar a tela inicial
+    btnEditWindowClose.addEventListener('click', (e) => {
+    shiftWindow();
 });
 
 
 // adiciona a classe abrir no html para que possamos tratar ela no css com o display
-function alternarJanelaEdicao() {
+function shiftWindow() {
     editList.classList.toggle('abrir');
     windowEditBack.classList.toggle('abrir');
-}
-
-
-
-function AddWindow() {
-    AddWindowDiv.classList.toggle('abrir'); // para abrir o popUp para adicionar tarefa
-    windowEditBack.classList.toggle('abrir'); // para deixar o fundo preto opaco
 }
 
 
@@ -113,7 +110,7 @@ function delet(idTask) {
 }
 
 
-// mostrar as tarefas do array na tela
+// Atualizar interface/tela com os objetos alterados do aray 
 function showResult() {
     // cria o ul do TODO
     let ul = document.querySelector("ul") // quando eu clicar em + ele vai selecionar a minha ul do html
@@ -126,9 +123,8 @@ function showResult() {
 
 
         // cria o ícone do check
-        let decoration = document.createElement('span')
-        decoration.classList.add('li-decoration');
-        decoration.innerHTML = '<img src="Assets/check.svg" alt="ícone de check">';
+        let decoration = document.createElement('input')
+        decoration.setAttribute("type", "checkbox")
 
         // cria o span de cada TODO
         let span = document.createElement('span');

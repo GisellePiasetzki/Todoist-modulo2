@@ -26,14 +26,12 @@
         </div>
         <ul id="taskList">
             <li>
-                <span class="li-decoration">
-                    <img src="Assets/check.svg" alt="ícone de check">
-                </span>
-
+                <input type="checkbox">
                 <span class="taskText">Tarefa 1</span>
+
                 <button class="btnAction">
                      <img src="Assets/trash.svg" alt="ícone lixeira">
-                    </button>
+                </button>
             </li>
         </ul>
     </section>
@@ -45,14 +43,13 @@
             <i class="fa fa-remove"></i>
         </button>
         <h2 id="idTarefaEdicao"></h2>
-        <hr>
         <form >
             <div class="frm-row">
                 <label for="name">Nome</label>
                 <input type="text" id="inputTaskNameEdit">
             </div>
             <div class="frm-row">
-                <input type="button" value="Update" onclick="update()" id="btnAttTask">
+                <input type="button" value="Atualizar" onclick="update()" id="btnAttTask">
             </div>
         </form>
     </div>
