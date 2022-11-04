@@ -144,8 +144,6 @@ ul li {
     border: none;
 }
 
-
-
 .fa-remove {
     color: #374393;
     font-size: 20px;
@@ -188,6 +186,11 @@ ul li {
     border-radius: 5px;
 }
 
+#AddWindowDiv input[type=text] {
+    border: 1px solid rgba(88, 87, 87, 0.596);
+    font-size: 18px;
+    margin-top: 50px;
+}
 
 #AddWindowDiv{
    position: fixed;
@@ -220,6 +223,11 @@ ul li {
     display: flex;
     align-items: center;
     margin: auto;
+    margin-top: 30px;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
 
 }
 
