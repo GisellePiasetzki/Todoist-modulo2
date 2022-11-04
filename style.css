@@ -97,6 +97,10 @@ ul li {
     border-radius: 5px;
 }
 
+#openAddWindow:active{
+    background-color: #6a75ce;
+}
+
 
 #windowEditBack{
     position: fixed;

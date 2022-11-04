@@ -40,6 +40,26 @@ function AddWindow() {
     inputNewTask.focus(); // deixar o campo input já selecionado 
 }
 
+function AddTaskFunction () {
+
+    const taskValue = inputNewTask.value; // varivel para guardar o valor que está no meu input
+
+    if(taskValue) { // if para não adicionar task vazia
+        array.push( {id:create_UUID(), task:taskValue} )
+    }
+    else {
+        alert("Precisa digitar um nome para tarefa") 
+        return // para não sair da janela (addWindow)
+    }
+    
+
+    inputNewTask.value = "" // limpar o campo 
+
+    showResult(); // Atualizar interface/tela com os objetos alterados do array 
+    AddWindow(); // para voltar a tela inicial e sair do modal 
+}
+
+
 // risca a task no front pelo checkbox 
 function check(idTask) {
     const cb = document.querySelector('#check' + idTask);
@@ -53,24 +73,6 @@ function check(idTask) {
     }
 }
 
-function AddTaskFunction () {
-
-    const taskValue = inputNewTask.value; // varivel para guardar o valor que está no meu input
-
-    if(taskValue) { // if para não adicionar task vazia
-        array.push( {id:create_UUID(), task:taskValue} )
-    }
-    else {
-        alert("Precisa digitar um nome para tarefa") 
-        return
-    }
-    
-
-    inputNewTask.value = "" // para quando clicar no botão adicionar, o campo input fica vazio
-
-    showResult(); // Atualizar interface/tela com os objetos alterados do aray 
-    AddWindow(); // para voltar a tela inicial e sair do modal 
-}
 
 // Chama a função adicionar tarefa quando clicar no Salvar
 btnAddTask.addEventListener('click', () => {
@@ -89,6 +91,19 @@ inputNewTask.addEventListener('keypress', (e) => {
 btnAddClose.addEventListener('click', () => {
     AddWindow();
 });
+
+
+// Ao clicar no botão fechar do modal Editar ele chama a funcao alternar janela para voltar a tela inicial
+btnEditWindowClose.addEventListener('click', () => {
+    shiftWindow();
+});
+
+// adiciona a classe abrir no html para que possamos tratar ela no css com o display
+function shiftWindow() {
+    editList.classList.toggle('abrir');
+    windowEditBack.classList.toggle('abrir');
+}
+
 
 // Tafera para quando o botão EDITAR é acionado
 function edit(idTask){
@@ -113,18 +128,6 @@ function update() {
     array[iTODO].task = updte; // pegamos o array no indice a ser editado, e passamos o novo valor capturado no update
     shiftWindow() // sai do modal Editar
     showResult() // mostra a lista de tarefas, já com o array editado na tela 
-}
-
-// Ao clicar no botão fechar do modal Editar ele chama a funcao alternar janela para voltar a tela inicial
-btnEditWindowClose.addEventListener('click', () => {
-    shiftWindow();
-});
-
-
-// adiciona a classe abrir no html para que possamos tratar ela no css com o display
-function shiftWindow() {
-    editList.classList.toggle('abrir');
-    windowEditBack.classList.toggle('abrir');
 }
 
 // deleta a tarefa
