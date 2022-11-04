@@ -20,15 +20,15 @@ function create_UUID() {
 }
 
 // variáveis do HTML para trabalhar com DOM
-let btnAddTask = document.querySelector('#btnAddTask');
-let inputNewTask = document.querySelector('#inputNewTask');
-let editWindow = document.querySelector('#editWindow');
-let windowEditBack = document.querySelector('#windowEditBack');
-let btnEditWindowClose = document.querySelector('#btnEditWindowClose');
-let idTarefaEdicao = document.querySelector('#idTarefaEdicao');
-let inputTaskNameEdit = document.querySelector('#inputTaskNameEdit');
-let btnAttTask = document.querySelector('#btnAttTask');
-let inputTask = document.getElementsByClassName("input-task");
+const btnAddTask = document.querySelector('#btnAddTask');
+const inputNewTask = document.querySelector('#inputNewTask');
+const editWindow = document.querySelector('#editWindow');
+const windowEditBack = document.querySelector('#windowEditBack');
+const btnEditWindowClose = document.querySelector('#btnEditWindowClose');
+const idTarefaEdicao = document.querySelector('#idTarefaEdicao');
+const inputTaskNameEdit = document.querySelector('#inputTaskNameEdit');
+const btnAttTask = document.querySelector('#btnAttTask');
+const inputTask = document.getElementsByClassName("input-task");
 
 // Mostrar modal ao apertar botão +
 function AddWindow() {
@@ -70,7 +70,7 @@ btnAddTask.addEventListener('click', () => {
 // Tafera para quando o botão EDITAR é acionado
 function edit(idTask){
     document.getElementById("inputTaskNameEdit").dataset.idTask = idTask; // Pegamos o id da tafera para editar
-    let li = document.getElementById('' + idTask + ''); // Pegamos o li da tafera pelo Id
+    const li = document.getElementById('' + idTask + ''); // Pegamos o li da tafera pelo Id
 
     if(li) {
         // idTarefaEdicao.innerHTML = '#' +idTask;  // Ativar caso queira saber qual o ID da tarefa no popup editar
@@ -81,7 +81,7 @@ function edit(idTask){
 
 // Tarefa para atualizar o valor editado quando clicar em Atualizar
 function update() {
-    let updte = document.getElementById("inputTaskNameEdit").value; // pega o valor digitado no input editar
+    const updte = document.getElementById("inputTaskNameEdit").value; // pega o valor digitado no input editar
     idTask = document.getElementById("inputTaskNameEdit").dataset.idTask; // Pegamos o id da tafera para editar
    
     // Descobir qual é o índice da tarefa a ser editada
@@ -106,7 +106,7 @@ function shiftWindow() {
 
 // deleta a tarefa
 function delet(idTask) {
-    let confirmation = window.confirm('Tem certeza que deseja excluir essa tarefa?')
+    const confirmation = window.confirm('Tem certeza que deseja excluir essa tarefa?')
 
     if (confirmation) {
         // indentificamos qual o índice 
@@ -128,33 +128,33 @@ function showResult() {
 
     array.forEach(function (taskIn) {
         // cria o li de cada TODO
-        let li = document.createElement("li");
+        const li = document.createElement("li");
         li.id = taskIn.id;
 
         // cria o ícone do check
-        let decoration = document.createElement('input')
+        const decoration = document.createElement('input')
         decoration.setAttribute("type", "checkbox");
         decoration.id = "check" + taskIn.id;
         decoration.setAttribute("onclick", `check('${taskIn.id}')`);
 
         // cria o span de cada TODO
-        let span = document.createElement('span');
+        const span = document.createElement('span');
         span.classList.add('taskList');
         span.id = "span" + taskIn.id;
         span.innerHTML = taskIn.task;
 
         // cria o div de cada TODO
-        let div = document.createElement('div');
+        const div = document.createElement('div');
 
         // cria o button (edit) de cada TODO
-        let btnEdit = document.createElement('button');
+        const btnEdit = document.createElement('button');
         btnEdit.classList.add('btnAction'); 
         btnEdit.innerHTML = '<img src="Assets/pencil.svg">';
         btnEdit.setAttribute("onclick", `edit('${taskIn.id}')`);
         btnEdit.setAttribute("id", taskIn.id);
 
         // cria o button (delete) de cada TODO
-        let btnTrash = document.createElement('button');
+        const btnTrash = document.createElement('button');
         btnTrash.classList.add('btnAcao'); 
         btnTrash.innerHTML = '<img src="Assets/trash.svg" alt="ícone lixeira">';
         btnTrash.setAttribute("onclick", `delet('${taskIn.id}')`);
