@@ -37,7 +37,7 @@ function AddWindow() {
 }
 
 // risca a task no front pelo checkbox
-function check(idTask){
+function check(idTask) {
     const cb = document.querySelector('#check' + idTask);
     const task = document.getElementById('span' + idTask);
     
