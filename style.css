@@ -51,8 +51,6 @@ input[type=checkbox] {
     scale: 1.8;
     margin-left: 20px;
     
-    /* background-color: rebeccapurple !important; */
-
 }
 
 input:checked{
@@ -103,7 +101,7 @@ ul li {
 #windowEditBack{
     position: fixed;
    top: 0;
-   background-color: #000;
+   background-color: rgba(0, 0, 0, 0.849);
    bottom: 0;
    left: 0;
    opacity: 0.9;
@@ -134,24 +132,39 @@ ul li {
 
 #editList.abrir{
     display: block !important;
-    /* animation: modalTransition .5s ease-in; */
 }
 
 #editList #btnEditWindowClose{
     position: absolute;
+    background-color: transparent;
+    border: none;
+}
 
+.fa-remove {
+    color: #374393;
+    font-size: 20px;
 }
 
 #editList form {
-    margin-top: 40px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
+#editList form label {
+    font-size: 20px;
+}
 
 #editList form input[type=text] {
-    width: 80%;
+    width: 78%;
+    height: 30px;
+    margin-left: 8px;
+    padding: 20px;
+    border: 1px solid rgba(88, 87, 87, 0.596);
+    border-radius: 5px;
+    background-color: white;
+    font-size: 18px;
 }
 
 #editList form input[type=button] {
@@ -162,16 +175,6 @@ ul li {
     color: white;
     font-size: 20px;
     border-radius: 5px;
-}
-
-#editList button {
-    background-color: transparent;
-    border: none;
-}
-
-.fa-remove {
-    color: #374393;
-    font-size: 20px;
 }
 
 
